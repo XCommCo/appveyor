@@ -22,7 +22,7 @@ print("Screen resolution: {}x{}".format(screenWidth, screenHeight))
 
 # start iRIC install
 subprocess.Popen("iRIC_Offline_Installer_prod.exe")
-time.sleep(2.0)
+time.sleep(5.0)
 pyautogui.screenshot("iRIC-Setup-{}x{}.png".format(screenWidth, screenHeight))
 
 # click next
