@@ -55,3 +55,9 @@ pyautogui.screenshot("screenshot-{}x{}-final.png".format(screenWidth, screenHeig
 subprocess.Popen("iRIC_Offline_Installer_prod.exe")
 time.sleep(2.0)
 pyautogui.screenshot("iRIC_Offline_Installer_prod-{}x{}-0.png".format(screenWidth, screenHeight))
+
+# click next
+nextButton = pyautogui.locateCenterOnScreen('iRIC_Offline_Installer_prod-1024x768-NextButton.png')
+pyautogui.click(nextButton)
+time.sleep(0.5)
+pyautogui.screenshot("iRIC_Offline_Installer_prod-{}x{}-1.png".format(screenWidth, screenHeight))
