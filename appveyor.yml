@@ -3,6 +3,9 @@ version: '{branch}-{build}'
 # Force running on 'Windows Server 2016'
 image: Visual Studio 2017
 
+# See https://help.appveyor.com/discussions/questions/678-gui-unit-testing-in-appveyor
+os: unstable
+
 # py runs the latest installed version of python
 # ps : Set-DisplayResolution -Width 1920 -Height 1200  (doesn't work)
 before_build:
