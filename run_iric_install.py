@@ -60,3 +60,25 @@ time.sleep(1.0)
 pyautogui.screenshot("iRIC-LicenseAgreement-{}x{}.png".format(screenWidth, screenHeight))
 
 # click agree
+acceptRadio = pyautogui.locateCenterOnScreen('iRIC_Offline_Installer_prod-1024x768-AcceptRadio-2012.png')
+if acceptRadio is None:
+    print("Didn't locate iRIC_Offline_Installer_prod-1024x768-AcceptRadio-2012.png")
+    sys.exit(0)
+pyautogui.moveTo(acceptRadio)  # this might not be necessary (needs further testing - at least for iric installers)
+pyautogui.click(acceptRadio)
+time.sleep(1.0)
+pyautogui.screenshot("iRIC-LicenseAgreementAccept-{}x{}.png".format(screenWidth, screenHeight))
+
+# click next
+pyautogui.moveTo(nextButton)  # this might not be necessary (needs further testing - at least for iric installers)
+pyautogui.click(nextButton)
+time.sleep(1.0)
+pyautogui.screenshot("iRIC-StartMenushortcuts-{}x{}.png".format(screenWidth, screenHeight))
+
+# click next
+pyautogui.moveTo(nextButton)  # this might not be necessary (needs further testing - at least for iric installers)
+pyautogui.click(nextButton)
+time.sleep(1.0)
+pyautogui.screenshot("iRIC-ReadytoInstall-{}x{}.png".format(screenWidth, screenHeight))
+
+# click Install
