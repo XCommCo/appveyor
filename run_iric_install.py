@@ -82,3 +82,7 @@ time.sleep(1.0)
 pyautogui.screenshot("iRIC-ReadytoInstall-{}x{}.png".format(screenWidth, screenHeight))
 
 # click Install
+pyautogui.moveTo(nextButton)  # this might not be necessary (needs further testing - at least for iric installers)
+pyautogui.click(nextButton)
+time.sleep(60.0)
+pyautogui.screenshot("iRIC-Finished-{}x{}.png".format(screenWidth, screenHeight))
