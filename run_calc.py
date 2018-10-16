@@ -12,7 +12,7 @@ HEIGHT = 3
 
 pyautogui.FAILSAFE = False
 
-# place mouse on screen to start iRIC (if multiple screens)
+# place mouse on screen to start calc (if multiple screens)
 pyautogui.moveTo(1, 1)
 
 # verify resolution
@@ -67,17 +67,5 @@ pyautogui.hotkey('alt', '1')
 time.sleep(2.0)
 pyautogui.screenshot("screenshot-{}x{}-final.png".format(screenWidth, screenHeight))
 
-# start iRIC install
-subprocess.Popen("iRIC_Offline_Installer_prod.exe")
-time.sleep(2.0)
-pyautogui.screenshot("iRIC_Offline_Installer_prod-{}x{}-0.png".format(screenWidth, screenHeight))
-
-# click next
-nextButton = pyautogui.locateCenterOnScreen('iRIC_Offline_Installer_prod-1024x768-NextButton.png')
-if location is None:
-    print("Didn't locate iRIC_Offline_Installer_prod-1024x768-NextButton.png")
-    sys.exit(0)
-
-pyautogui.click(nextButton)
-time.sleep(5.0)
-pyautogui.screenshot("iRIC_Offline_Installer_prod-{}x{}-1.png".format(screenWidth, screenHeight))
+# close calc
+pyautogui.hotkey('alt', 'f4')

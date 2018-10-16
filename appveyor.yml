@@ -17,6 +17,7 @@ before_build:
 
 build_script:
   - py run_calc.py
+  - py run_iric_install.py
 
 artifacts:
   - path: '**\*.png'
