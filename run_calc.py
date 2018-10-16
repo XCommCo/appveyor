@@ -47,7 +47,11 @@ time.sleep(2.0)
 pyautogui.screenshot("screenshot-{}x{}-3.png".format(screenWidth, screenHeight))
 
 
-
 pyautogui.hotkey('alt', '1')  # Alt+1 to set Standard
 time.sleep(2.0)
 pyautogui.screenshot("screenshot-{}x{}-final.png".format(screenWidth, screenHeight))
+
+# start iRIC install
+subprocess.Popen("iRIC_Offline_Installer_prod.exe")
+time.sleep(2.0)
+pyautogui.screenshot("iRIC_Offline_Installer_prod-{}x{}-0.png".format(screenWidth, screenHeight))

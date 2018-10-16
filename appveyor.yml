@@ -7,7 +7,7 @@ image: Visual Studio 2017
 # ps : Set-DisplayResolution -Width 1920 -Height 1200  (doesn't work)
 before_build:
   - py -m pip install pyautogui
-  - ps: (New-Object Net.WebClient).DownloadFile("https://ci.appveyor.com/api/buildjobs/4mjj3dxdptck25cv/artifacts/iRIC_Offline_Installer_prod-9a6400a0.exe", "iRIC_Offline_Installer_prod.exe")
+  - ps: (New-Object Net.WebClient).DownloadFile("https://ci.appveyor.com/api/buildjobs/4mjj3dxdptck25cv/artifacts/iRIC_Offline_Installer_prod-9a6400a0.exe", "$Env:APPVEYOR_BUILD_FOLDER\iRIC_Offline_Installer_prod.exe")
   - dir
 
 build_script:
