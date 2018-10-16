@@ -48,22 +48,12 @@ install_location = r.clipboard_get()
 print("Installation Folder:", install_location)
 
 # click next
-nextButton = pyautogui.locateCenterOnScreen('iRIC_Offline_Installer_prod-1024x768-NextButton-2012.png')
-if nextButton is None:
-    print("Didn't locate iRIC_Offline_Installer_prod-1024x768-NextButton-2012.png")
-    sys.exit(0)
-
 pyautogui.moveTo(nextButton)  # this might not be necessary (needs further testing - at least for iric installers)
 pyautogui.click(nextButton)
 time.sleep(1.0)
 pyautogui.screenshot("iRIC-SelectComponents-{}x{}.png".format(screenWidth, screenHeight))
 
 # click next
-nextButton = pyautogui.locateCenterOnScreen('iRIC_Offline_Installer_prod-1024x768-NextButton-2012.png')
-if nextButton is None:
-    print("Didn't locate iRIC_Offline_Installer_prod-1024x768-NextButton-2012.png")
-    sys.exit(0)
-
 pyautogui.moveTo(nextButton)  # this might not be necessary (needs further testing - at least for iric installers)
 pyautogui.click(nextButton)
 time.sleep(1.0)
