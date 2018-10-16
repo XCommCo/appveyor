@@ -4,6 +4,8 @@ import pyautogui, sys, time
 import subprocess
 import os
 
+pyautogui.FAILSAFE = False
+
 # place mouse on screen to start iRIC (if multiple screens)
 pyautogui.moveTo(1, 1)
 
