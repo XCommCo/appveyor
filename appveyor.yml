@@ -1,0 +1,13 @@
+version: '{branch}-{build}'
+
+# Force running on 'Windows Server 2016'
+image: Visual Studio 2017
+
+before_build:
+  - py -m pip install pyautogui
+
+build_script:
+  - py run_calc.py
+
+artifacts:
+  - path: '**\*.png'
