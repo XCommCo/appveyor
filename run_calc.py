@@ -39,9 +39,9 @@ pyautogui.screenshot("screenshot-{}x{}-2.png".format(screenWidth, screenHeight))
 
 # find upper left
 #left, top, width, height = pyautogui.locateOnScreen('upperLeft.png')
-location = pyautogui.locateOnScreen('upperLeft.png')
+location = pyautogui.locateOnScreen('upperLeft-2012.png')
 if location is None:
-    print("Didn't locate upperLeft.png")
+    print("Didn't locate upperLeft-2012.png")
     sys.exit(0)
 
 # move the mouse so nothing is highlighted
@@ -50,9 +50,9 @@ pyautogui.moveTo(location[LEFT] - 1, location[TOP] - 1)
 time.sleep(2.0)
 
 # find upper left
-location = pyautogui.locateOnScreen('lowerRight.png')
+location = pyautogui.locateOnScreen('lowerRight-2012.png')
 if location is None:
-    print("Didn't locate lowerRight.png")
+    print("Didn't locate lowerRight-2012.png")
     sys.exit(0)
 else:
     left, top, width, height = location

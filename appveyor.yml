@@ -2,7 +2,7 @@ version: '{branch}-{build}'
 
 # Force running on 'Windows Server 2016'
 # when running in interactive mode (os: unstable) Windows Server 2012 R2 is used
-image: Visual Studio 2017
+# image: Visual Studio 2017
 
 # See https://help.appveyor.com/discussions/questions/678-gui-unit-testing-in-appveyor
 # and https://twitter.com/appveyor/status/525658624593375236
