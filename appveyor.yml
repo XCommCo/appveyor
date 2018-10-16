@@ -9,9 +9,8 @@ version: '{branch}-{build}'
 os: unstable
 
 # py runs the latest installed version of python
-# ps : Set-DisplayResolution -Width 1920 -Height 1200  (doesn't work)
+# ps : Set-DisplayResolution -Width 1920 -Height 1200  (doesn't work -- including os: unstable) 
 before_build:
-  - ps : Set-DisplayResolution -Width 1920 -Height 1200
   - py -m pip install pyautogui
   - ps: (New-Object Net.WebClient).DownloadFile("https://ci.appveyor.com/api/buildjobs/4mjj3dxdptck25cv/artifacts/iRIC_Offline_Installer_prod-9a6400a0.exe", "$Env:APPVEYOR_BUILD_FOLDER\iRIC_Offline_Installer_prod.exe")
 
