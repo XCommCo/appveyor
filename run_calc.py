@@ -26,11 +26,12 @@ pyautogui.moveTo(screenWidth / 2, screenHeight / 2)
 
 # start calculator
 subprocess.Popen("calc.exe")
-time.sleep(2.0)
+time.sleep(5.0)
 
 pyautogui.screenshot("screenshot-{}x{}-1.png".format(screenWidth, screenHeight))
 
-pyautogui.hotkey('alt', '2')  # Alt+2 to set Scientific
+# Set to Scientific (Alt+2)
+pyautogui.hotkey('alt', '2')
 time.sleep(2.0)
 
 pyautogui.screenshot("screenshot-{}x{}-2.png".format(screenWidth, screenHeight))
