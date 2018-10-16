@@ -79,5 +79,5 @@ if location is None:
     sys.exit(0)
 
 pyautogui.click(nextButton)
-time.sleep(0.5)
+time.sleep(5.0)
 pyautogui.screenshot("iRIC_Offline_Installer_prod-{}x{}-1.png".format(screenWidth, screenHeight))
