@@ -5,6 +5,7 @@ image: Visual Studio 2017
 
 before_build:
   - py -m pip install pyautogui
+  - ps : Set-DisplayResolution -Width 1920 -Height 1200
 
 build_script:
   - py run_calc.py
