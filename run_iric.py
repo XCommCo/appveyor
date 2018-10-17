@@ -13,12 +13,15 @@ HEIGHT = 3
 
 pyautogui.FAILSAFE = False
 
-# place mouse on screen to start iRIC (if multiple screens)
-pyautogui.moveTo(1, 1)
+# # place mouse on screen to start iRIC (if multiple screens)
+# pyautogui.moveTo(1, 1)
 
 # verify resolution
 screenWidth, screenHeight = pyautogui.size()
 print("Screen resolution: {}x{}".format(screenWidth, screenHeight))
+
+# place mouse at middle of screen
+pyautogui.moveTo(screenWidth / 2, screenHeight / 2)
 
 # minimize everything
 pyautogui.hotkey('win', 'm')
@@ -64,3 +67,26 @@ pyautogui.moveTo(maximizeButton)  # this might not be necessary (needs further t
 pyautogui.click(maximizeButton)
 time.sleep(1.0)
 pyautogui.screenshot("Maximized-{}x{}.png".format(screenWidth, screenHeight))
+
+# restore main window
+restoreButton = pyautogui.locateCenterOnScreen('restoreButton-2012.png')
+if restoreButton is None:
+    print("Didn't locate restoreButton-2012.png")
+    sys.exit(0)
+pyautogui.moveTo(restoreButton)  # this might not be necessary (needs further testing - at least for iric installers)
+pyautogui.click(restoreButton)
+time.sleep(1.0)
+pyautogui.screenshot("Restored-{}x{}.png".format(screenWidth, screenHeight))
+
+# close main window
+xButton = pyautogui.locateCenterOnScreen('xButton-2012.png')
+if xButton is None:
+    print("Didn't locate xButton-2012.png")
+    sys.exit(0)
+pyautogui.moveTo(xButton)  # this might not be necessary (needs further testing - at least for iric installers)
+pyautogui.click(xButton)
+time.sleep(1.0)
+pyautogui.screenshot("Closed-{}x{}.png".format(screenWidth, screenHeight))
+
+# place mouse at middle of screen
+pyautogui.moveTo(screenWidth / 2, screenHeight / 2)
