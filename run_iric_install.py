@@ -104,3 +104,11 @@ if cmdUpperLeft is None:
     sys.exit(0)
 pyautogui.hotkey('win', 'down')
 pyautogui.screenshot("Desktop-{}x{}.png".format(screenWidth, screenHeight))
+
+# start iRIC
+iricIcon = pyautogui.locateCenterOnScreen('iricIcon-2012.png')
+if iricIcon is None:
+    print("Didn't locate iricIcon-2012.png")
+    sys.exit(0)
+pyautogui.doubleClick(iricIcon)
+pyautogui.screenshot("StartIRIC-{}x{}.png".format(screenWidth, screenHeight))
