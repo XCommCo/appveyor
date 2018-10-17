@@ -133,3 +133,13 @@ pyautogui.moveTo(closeButton)  # this might not be necessary (needs further test
 pyautogui.click(closeButton)
 time.sleep(1.0)
 pyautogui.screenshot("AfterStartPage-{}x{}.png".format(screenWidth, screenHeight))
+
+# maximize main window
+maximizeButton = pyautogui.locateCenterOnScreen('maximizeButton-2012.png')
+if maximizeButton is None:
+    print("Didn't locate maximizeButton-2012.png")
+    sys.exit(0)
+pyautogui.moveTo(maximizeButton)  # this might not be necessary (needs further testing - at least for iric installers)
+pyautogui.click(maximizeButton)
+time.sleep(1.0)
+pyautogui.screenshot("Maximized-{}x{}.png".format(screenWidth, screenHeight))
