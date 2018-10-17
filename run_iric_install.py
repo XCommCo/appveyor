@@ -21,7 +21,7 @@ screenWidth, screenHeight = pyautogui.size()
 print("Screen resolution: {}x{}".format(screenWidth, screenHeight))
 
 # start iRIC install
-subprocess.Popen("iRIC_Offline_Installer_prod.exe")
+subprocess.Popen("iRIC_Offline_Installer_No_Runtime_prod.exe")
 time.sleep(10.0)
 pyautogui.screenshot("iRIC-Setup-{}x{}.png".format(screenWidth, screenHeight))
 
