@@ -123,3 +123,13 @@ else:
     pyautogui.click(maintainanceButtons[LEFT] + 189, maintainanceButtons[TOP] + maintainanceButtons[HEIGHT]/2)
 time.sleep(1.0)
 pyautogui.screenshot("AfterMaintainance-{}x{}.png".format(screenWidth, screenHeight))
+
+# close Start Page
+closeButton = pyautogui.locateCenterOnScreen('closeButton-2012.png')
+if closeButton is None:
+    print("Didn't locate closeButton-2012.png")
+    sys.exit(0)
+pyautogui.moveTo(closeButton)  # this might not be necessary (needs further testing - at least for iric installers)
+pyautogui.click(closeButton)
+time.sleep(1.0)
+pyautogui.screenshot("AfterStartPage-{}x{}.png".format(screenWidth, screenHeight))
