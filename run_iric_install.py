@@ -96,3 +96,11 @@ pyautogui.moveTo(finishButton)  # this might not be necessary (needs further tes
 pyautogui.click(finishButton)
 time.sleep(1.0)
 pyautogui.screenshot("Done-{}x{}.png".format(screenWidth, screenHeight))
+
+# minimize cmd.exe (if visible)
+cmdUpperLeft = pyautogui.locateCenterOnScreen('cmdUpperLeft-2012.png')
+if cmdUpperLeft is None:
+    print("Didn't locate cmdUpperLeft-2012.png")
+    sys.exit(0)
+pyautogui.hotkey('win', 'down')
+pyautogui.screenshot("Desktop-{}x{}.png".format(screenWidth, screenHeight))
