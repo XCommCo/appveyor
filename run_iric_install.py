@@ -84,12 +84,15 @@ pyautogui.screenshot("iRIC-ReadytoInstall-{}x{}.png".format(screenWidth, screenH
 # click Install
 pyautogui.moveTo(nextButton)  # this might not be necessary (needs further testing - at least for iric installers)
 pyautogui.click(nextButton)
-time.sleep(3.0)
+time.sleep(120.0)
 pyautogui.screenshot("iRIC-Finished-{}x{}.png".format(screenWidth, screenHeight))
 
 # click Finish
 finishButton = pyautogui.locateCenterOnScreen('iRIC_Offline_Installer_prod-1024x768-FinishButton-2012.png')
+if finishButton is None:
+    print("Didn't locate iRIC_Offline_Installer_prod-1024x768-FinishButton-2012.png")
+    sys.exit(0)
 pyautogui.moveTo(finishButton)  # this might not be necessary (needs further testing - at least for iric installers)
 pyautogui.click(finishButton)
-time.sleep(3.0)
+time.sleep(1.0)
 pyautogui.screenshot("Done-{}x{}.png".format(screenWidth, screenHeight))
