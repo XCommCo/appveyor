@@ -26,7 +26,8 @@ time.sleep(1.0)
 pyautogui.screenshot("Desktop-{}x{}.png".format(screenWidth, screenHeight))
 
 # start iRIC
-iricIcon = pyautogui.locateCenterOnScreen('iricIcon-2012.png', grayscale=True)
+##iricIcon = pyautogui.locateCenterOnScreen('iricIcon-2012.png', grayscale=True)
+iricIcon = pyautogui.locateCenterOnScreen('iricIcon-2012.png')
 if iricIcon is None:
     print("Didn't locate iricIcon-2012.png")
     sys.exit(0)
