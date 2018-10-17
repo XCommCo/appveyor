@@ -113,3 +113,13 @@ if iricIcon is None:
 pyautogui.doubleClick(iricIcon)
 time.sleep(5.0)
 pyautogui.screenshot("StartIRIC-{}x{}.png".format(screenWidth, screenHeight))
+
+# cancel maintenance if visible
+maintainanceButtons = pyautogui.locateOnScreen('maintainanceButtons-2012.png')
+if maintainanceButtons is None:
+    print("Didn't locate maintainanceButtons-2012.png")
+else:
+    pyautogui.moveTo(maintainanceButtons[LEFT] + 189, maintainanceButtons[TOP] + maintainanceButtons[HEIGHT]/2)  # this might not be necessary (needs further testing - at least for iric installers)
+    pyautogui.click(maintainanceButtons[LEFT] + 189, maintainanceButtons[TOP] + maintainanceButtons[HEIGHT]/2)
+time.sleep(1.0)
+pyautogui.screenshot("AfterMaintainance-{}x{}.png".format(screenWidth, screenHeight))
