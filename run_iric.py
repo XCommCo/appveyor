@@ -25,11 +25,11 @@ pyautogui.hotkey('win', 'm')
 time.sleep(1.0)
 pyautogui.screenshot("Desktop-{}x{}.png".format(screenWidth, screenHeight))
 
-# start iRIC
-##iricIcon = pyautogui.locateCenterOnScreen('iricIcon-2012.png', grayscale=True)
-iricIcon = pyautogui.locateCenterOnScreen('iricIcon-2012.png')
+# start iRIC (Don't include the shortcut overlay for additional compatibility)
+# see iricIcon-2012.diff.png
+iricIcon = pyautogui.locateCenterOnScreen('iricIcon-no-shortcut-2012.png')
 if iricIcon is None:
-    print("Didn't locate iricIcon-2012.png")
+    print("Didn't locate iricIcon-no-shortcut-2012.png")
     sys.exit(0)
 pyautogui.doubleClick(iricIcon)
 time.sleep(5.0)
