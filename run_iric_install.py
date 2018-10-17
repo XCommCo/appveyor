@@ -111,4 +111,5 @@ if iricIcon is None:
     print("Didn't locate iricIcon-2012.png")
     sys.exit(0)
 pyautogui.doubleClick(iricIcon)
+time.sleep(5.0)
 pyautogui.screenshot("StartIRIC-{}x{}.png".format(screenWidth, screenHeight))
