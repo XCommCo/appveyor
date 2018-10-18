@@ -203,10 +203,11 @@ pyautogui.screenshot("dragScalarbar-{}x{}.png".format(screenWidth, screenHeight)
 # colors (Figure 5). Uncheck “Automatic” and change the maximum to 840 to see more detail in the channel.
 # Select OK.
 
-# Geographic Data->Color Setting->Elevation
+# Geographic Data->Color Setting->Elevation and set max to 840
 pyautogui.typewrite(['alt', 'e', 'down', 'down', 'down', 'down', 'down', 'enter', 'enter'], interval=.1)
-pyautogui.typewrite(['tab', 'tab', 'space', 'tab', 'tab', '8', '4', '0', 'tab', 'tab', 'tab', 'enter'], interval=.1)
+pyautogui.typewrite(['tab', 'tab', 'space', 'tab', '8', '4', '0', 'tab', 'tab', 'tab', 'enter'], interval=.1)
 time.sleep(1.5)
+pyautogui.screenshot("setMaxScalarbar-{}x{}.png".format(screenWidth, screenHeight))
 
 # minimize window to know when finished
 minimizeButton = pyautogui.locateCenterOnScreen('../../../minimizeButton-2012.png')
