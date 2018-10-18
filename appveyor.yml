@@ -19,6 +19,8 @@ build_script:
   - py run_calc.py
   - py run_iric_install.py
   - py run_iric.py
+  - cd "FaSTMECH\Tutorial 1\Exercise 1"
+  - py fastmech_tut1_ex1.py
 
 artifacts:
   - path: '**\*.png'
