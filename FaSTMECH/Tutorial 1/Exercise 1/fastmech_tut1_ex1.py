@@ -115,7 +115,7 @@ pyautogui.screenshot("preProcessingMaximize-{}x{}.png".format(screenWidth, scree
 pyautogui.typewrite(['alt', 'i', 'e', 'enter'], interval=.1)
 pyautogui.typewrite(os.getcwd()+'\\r5finpt2m114_shifted.tpo\n', interval=.1)
 pyautogui.typewrite(['tab', 'enter'], interval=.2)
-time.sleep(1.0)
+time.sleep(4.0)
 pyautogui.screenshot("importElevation-{}x{}.png".format(screenWidth, screenHeight))
 
 # copy and paste file name
