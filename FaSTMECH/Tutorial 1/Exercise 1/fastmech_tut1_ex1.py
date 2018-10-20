@@ -112,6 +112,8 @@ time.sleep(1.0)
 pyautogui.screenshot("preProcessingMaximize-{}x{}.png".format(screenWidth, screenHeight))
 
 # Import r5finpt2m114_shifted.tpo
+print("os.getcwd()=", os.getcwd())
+print("fullpath=", os.getcwd()+'\\r5finpt2m114_shifted.tpo')
 pyautogui.typewrite(['alt', 'i', 'e', 'enter'], interval=.2)
 pyautogui.typewrite(os.getcwd()+'\\r5finpt2m114_shifted.tpo', interval=.2)
 time.sleep(2.5)
