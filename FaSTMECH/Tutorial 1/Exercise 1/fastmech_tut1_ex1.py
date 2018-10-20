@@ -114,9 +114,9 @@ pyautogui.screenshot("preProcessingMaximize-{}x{}.png".format(screenWidth, scree
 # Import r5finpt2m114_shifted.tpo
 pyautogui.typewrite(['alt', 'i', 'e', 'enter'], interval=.2)
 pyautogui.typewrite(os.getcwd()+'\\r5finpt2m114_shifted.tpo', interval=.2)
-time.sleep(0.5)
-pyautogui.typewrite(['tab', 'tab', 'space'], interval=.2)
-time.sleep(4.0)
+pyautogui.typewrite(['enter'], interval=.2)
+time.sleep(2.5)
+# leave default setting of 1
 pyautogui.typewrite(['tab', 'enter'], interval=.2)
 time.sleep(4.0)
 pyautogui.screenshot("importElevation-{}x{}.png".format(screenWidth, screenHeight))
