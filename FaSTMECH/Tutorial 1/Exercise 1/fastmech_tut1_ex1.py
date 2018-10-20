@@ -209,6 +209,210 @@ pyautogui.typewrite(['tab', 'tab', 'space', 'tab', '8', '4', '0', 'tab', 'tab', 
 time.sleep(1.5)
 pyautogui.screenshot("setMaxScalarbar-{}x{}.png".format(screenWidth, screenHeight))
 
+
+# Explore the Pre-processing window controls using the buttons on the Main Toolbar to zoom in and out
+# and pan (See the Introduction for an overview). Also try the mouse options that allow you to pan (ctrl + left
+# mouse button), zoom in and out (ctrl + mouse wheel), and rotate (ctrl + right mouse button) the canvas
+# display. Select to center the data in the Pre-processing window and, if you rotated the view, select to
+# restore the original orientation. 
+
+# User left click on "Move Left (button)"
+moveArrows = pyautogui.locateOnScreen('../../../moveArrows-2012.png')
+if maintainanceButtons is None:
+    print("Didn't locate moveArrows-2012.png")
+    sys.exit(0)
+pyautogui.moveTo(moveArrows[LEFT] + 8, moveArrows[TOP] + moveArrows[HEIGHT]/2)  # this might not be necessary (needs further testing - at least for iric installers)
+pyautogui.click(moveArrows[LEFT] + 8, moveArrows[TOP] + moveArrows[HEIGHT]/2)
+time.sleep(1.0)
+pyautogui.screenshot("moveLeft-{}x{}.png".format(screenWidth, screenHeight))
+
+# User left click on "Move Right (button)"
+pyautogui.moveTo(moveArrows[LEFT] + 32, moveArrows[TOP] + moveArrows[HEIGHT]/2)  # this might not be necessary (needs further testing - at least for iric installers)
+pyautogui.click(moveArrows[LEFT] + 32, moveArrows[TOP] + moveArrows[HEIGHT]/2)
+time.sleep(1.0)
+
+# User left click on "Move Up (button)"
+pyautogui.moveTo(moveArrows[LEFT] + 56, moveArrows[TOP] + moveArrows[HEIGHT]/2)  # this might not be necessary (needs further testing - at least for iric installers)
+pyautogui.click(moveArrows[LEFT] + 56, moveArrows[TOP] + moveArrows[HEIGHT]/2)
+time.sleep(1.0)
+pyautogui.screenshot("moveUp-{}x{}.png".format(screenWidth, screenHeight))
+
+# User left click on "Move Down (button)"
+pyautogui.moveTo(moveArrows[LEFT] + 78, moveArrows[TOP] + moveArrows[HEIGHT]/2)  # this might not be necessary (needs further testing - at least for iric installers)
+pyautogui.click(moveArrows[LEFT] + 78, moveArrows[TOP] + moveArrows[HEIGHT]/2)
+time.sleep(1.0)
+
+# User left click on "Move Right (button)"
+pyautogui.moveTo(moveArrows[LEFT] + 32, moveArrows[TOP] + moveArrows[HEIGHT]/2)  # this might not be necessary (needs further testing - at least for iric installers)
+pyautogui.click(moveArrows[LEFT] + 32, moveArrows[TOP] + moveArrows[HEIGHT]/2)
+time.sleep(1.0)
+pyautogui.screenshot("moveRight-{}x{}.png".format(screenWidth, screenHeight))
+
+# User left click on "Move Left (button)"
+pyautogui.moveTo(moveArrows[LEFT] + 8, moveArrows[TOP] + moveArrows[HEIGHT]/2)  # this might not be necessary (needs further testing - at least for iric installers)
+pyautogui.click(moveArrows[LEFT] + 8, moveArrows[TOP] + moveArrows[HEIGHT]/2)
+time.sleep(1.0)
+
+# User left click on "Move Down (button)"
+pyautogui.moveTo(moveArrows[LEFT] + 78, moveArrows[TOP] + moveArrows[HEIGHT]/2)  # this might not be necessary (needs further testing - at least for iric installers)
+pyautogui.click(moveArrows[LEFT] + 78, moveArrows[TOP] + moveArrows[HEIGHT]/2)
+time.sleep(1.0)
+pyautogui.screenshot("moveDown-{}x{}.png".format(screenWidth, screenHeight))
+
+# User left click on "Move Up (button)"
+pyautogui.moveTo(moveArrows[LEFT] + 56, moveArrows[TOP] + moveArrows[HEIGHT]/2)  # this might not be necessary (needs further testing - at least for iric installers)
+pyautogui.click(moveArrows[LEFT] + 56, moveArrows[TOP] + moveArrows[HEIGHT]/2)
+time.sleep(1.0)
+
+
+# init mouse
+pyautogui.moveTo(617, 377)
+
+# Ctrl drag upperRight
+pyautogui.keyDown('ctrl')
+pyautogui.dragRel(100, -70, 0.7, pyautogui.easeOutQuad)
+pyautogui.keyUp('ctrl')
+time.sleep(0.5)
+pyautogui.screenshot("dragUpperRight-{}x{}.png".format(screenWidth, screenHeight))
+
+# return
+pyautogui.keyDown('ctrl')
+pyautogui.dragRel(-100, 70, 0.7, pyautogui.easeOutQuad)
+pyautogui.keyUp('ctrl')
+time.sleep(0.5)
+
+# Ctrl drag lowerRight
+pyautogui.keyDown('ctrl')
+pyautogui.dragRel(100, 70, 0.7, pyautogui.easeOutQuad)
+pyautogui.keyUp('ctrl')
+time.sleep(0.5)
+pyautogui.screenshot("dragLowerRight-{}x{}.png".format(screenWidth, screenHeight))
+
+# return
+pyautogui.keyDown('ctrl')
+pyautogui.dragRel(-100, -70, 0.7, pyautogui.easeOutQuad)
+pyautogui.keyUp('ctrl')
+time.sleep(0.5)
+
+# Ctrl drag lowerLeft
+pyautogui.keyDown('ctrl')
+pyautogui.dragRel(-100, 70, 0.7, pyautogui.easeOutQuad)
+pyautogui.keyUp('ctrl')
+time.sleep(0.5)
+pyautogui.screenshot("dragLowerLeft-{}x{}.png".format(screenWidth, screenHeight))
+
+# return
+pyautogui.keyDown('ctrl')
+pyautogui.dragRel(100, -70, 0.7, pyautogui.easeOutQuad)
+pyautogui.keyUp('ctrl')
+time.sleep(0.5)
+
+# Ctrl drag upperLeft
+pyautogui.keyDown('ctrl')
+pyautogui.dragRel(-100, -70, 0.7, pyautogui.easeOutQuad)
+pyautogui.keyUp('ctrl')
+time.sleep(0.5)
+pyautogui.screenshot("dragUpperLeft-{}x{}.png".format(screenWidth, screenHeight))
+
+# return
+pyautogui.keyDown('ctrl')
+pyautogui.dragRel(100, 70, 0.7, pyautogui.easeOutQuad)
+pyautogui.keyUp('ctrl')
+time.sleep(0.5)
+
+
+# Zoom in
+pyautogui.scroll(1)
+time.sleep(0.3)
+pyautogui.scroll(1)
+time.sleep(0.3)
+pyautogui.scroll(1)
+time.sleep(0.3)
+pyautogui.scroll(1)
+time.sleep(0.3)
+pyautogui.scroll(1)
+time.sleep(0.3)
+time.sleep(1.0)
+pyautogui.screenshot("zoomIn-{}x{}.png".format(screenWidth, screenHeight))
+
+# Zoom out
+pyautogui.scroll(-1)
+time.sleep(0.3)
+pyautogui.scroll(-1)
+time.sleep(0.3)
+pyautogui.scroll(-1)
+time.sleep(0.3)
+pyautogui.scroll(-1)
+time.sleep(0.3)
+pyautogui.scroll(-1)
+time.sleep(0.3)
+time.sleep(1.0)
+pyautogui.screenshot("zoomOut-{}x{}.png".format(screenWidth, screenHeight))
+
+# init mouse
+pyautogui.moveTo(617, 377)
+
+# spinCCW
+pyautogui.keyDown('ctrl')
+pyautogui.dragRel(25, -25, 0.7, pyautogui.easeOutQuad, 'right')
+pyautogui.keyUp('ctrl')
+time.sleep(0.5)
+pyautogui.screenshot("spinCCW-{}x{}.png".format(screenWidth, screenHeight))
+
+# return
+pyautogui.keyDown('ctrl')
+pyautogui.dragRel(-25, 25, 0.7, pyautogui.easeOutQuad, 'right')
+pyautogui.keyUp('ctrl')
+time.sleep(0.5)
+
+# spinCW
+pyautogui.keyDown('ctrl')
+pyautogui.dragRel(-25, 25, 0.7, pyautogui.easeOutQuad, 'right')
+pyautogui.keyUp('ctrl')
+time.sleep(0.5)
+pyautogui.screenshot("spinCW-{}x{}.png".format(screenWidth, screenHeight))
+
+# return
+pyautogui.keyDown('ctrl')
+pyautogui.dragRel(25, -25, 0.7, pyautogui.easeOutQuad, 'right')
+pyautogui.keyUp('ctrl')
+time.sleep(0.5)
+
+
+# zoom in and rotate CW
+pyautogui.scroll(1)
+time.sleep(0.3)
+pyautogui.scroll(1)
+time.sleep(0.3)
+pyautogui.scroll(1)
+time.sleep(0.3)
+pyautogui.keyDown('ctrl')
+pyautogui.dragRel(-25, 25, 0.7, pyautogui.easeOutQuad, 'right')
+pyautogui.keyUp('ctrl')
+time.sleep(1.0)
+pyautogui.screenshot("zoomInRotateCW-{}x{}.png".format(screenWidth, screenHeight))
+
+# reset rotation
+resetRotationButton = pyautogui.locateCenterOnScreen('../../../resetRotationButton-2012.png')
+if resetRotationButton is None:
+    print("Didn't locate resetRotationButton-2012.png")
+    sys.exit(0)
+pyautogui.moveTo(resetRotationButton)  # this might not be necessary (needs further testing - at least for iric installers)
+pyautogui.click(resetRotationButton)
+time.sleep(1.0)
+pyautogui.screenshot("resetRotation-{}x{}.png".format(screenWidth, screenHeight))
+
+# reset zoom
+fitButton = pyautogui.locateCenterOnScreen('../../../fitButton-2012.png')
+if resetRotationButton is None:
+    print("Didn't locate fitButton-2012.png")
+    sys.exit(0)
+pyautogui.moveTo(fitButton)  # this might not be necessary (needs further testing - at least for iric installers)
+pyautogui.click(fitButton)
+time.sleep(1.0)
+pyautogui.screenshot("resetZoom-{}x{}.png".format(screenWidth, screenHeight))
+
+
 # minimize window to know when finished
 minimizeButton = pyautogui.locateCenterOnScreen('../../../minimizeButton-2012.png')
 if minimizeButton is None:
