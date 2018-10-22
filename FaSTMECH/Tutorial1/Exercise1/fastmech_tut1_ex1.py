@@ -28,6 +28,7 @@ WIDTH = 2
 HEIGHT = 3
 
 pyautogui.FAILSAFE = False
+type_interval = 0.02
 
 # # place mouse on screen to start iRIC (if multiple screens)
 # pyautogui.moveTo(1, 1)
@@ -114,9 +115,8 @@ pyautogui.screenshot("preProcessingMaximize-{}x{}.png".format(screenWidth, scree
 # Import r5finpt2m114_shifted.tpo
 print("os.getcwd()=", os.getcwd())
 print("fullpath=", os.getcwd()+'\\r5finpt2m114_shifted.tpo')
-pyautogui.typewrite(['alt', 'i', 'e', 'enter'], interval=.2)
+pyautogui.typewrite(['alt', 'i', 'e', 'enter'], interval=type_interval)
 ##pyautogui.typewrite(os.getcwd()+'\\r5finpt2m114_shifted.tpo', interval=.2)
-type_interval = 0.02
 pyautogui.screenshot("importElevation-0-{}x{}.png".format(screenWidth, screenHeight))
 pyautogui.typewrite(os.getcwd(), interval=type_interval)
 pyautogui.screenshot("importElevation-1-{}x{}.png".format(screenWidth, screenHeight))
@@ -138,7 +138,7 @@ pyautogui.screenshot("importElevation-4-{}x{}.png".format(screenWidth, screenHei
 time.sleep(2.5)
 pyautogui.screenshot("importElevation-5-{}x{}.png".format(screenWidth, screenHeight))
 # leave default setting of 1
-pyautogui.typewrite(['tab', 'enter'], interval=.2)
+pyautogui.typewrite(['tab', 'enter'], interval=type_interval)
 time.sleep(4.0)
 pyautogui.screenshot("importElevation-{}x{}.png".format(screenWidth, screenHeight))
 
@@ -194,8 +194,8 @@ if pointsItem is None:
 pyautogui.moveTo(pointsItem)  # this might not be necessary (needs further testing - at least for iric installers)
 pyautogui.rightClick(pointsItem)
 time.sleep(0.1)
-pyautogui.typewrite(['down', 'down', 'down', 'down', 'down', 'down', 'enter'], interval=.1)
-pyautogui.typewrite(['tab', '1', 'tab', 'tab', 'enter'], interval=.1)
+pyautogui.typewrite(['down', 'down', 'down', 'down', 'down', 'down', 'enter'], interval=type_interval)
+pyautogui.typewrite(['tab', '1', 'tab', 'tab', 'enter'], interval=type_interval)
 pyautogui.screenshot("pointsItemOne-{}x{}.png".format(screenWidth, screenHeight))
 
 # Add a data legend for the elevation data by selecting in the Object Browser Geographic Data | Elevation
@@ -211,8 +211,8 @@ if elevationItem is None:
     sys.exit(0)
 pyautogui.moveTo(elevationItem)  # this might not be necessary (needs further testing - at least for iric installers)
 pyautogui.rightClick(elevationItem)
-pyautogui.typewrite(['up', 'enter'], interval=.1)
-pyautogui.typewrite(['enter'], interval=.1)
+pyautogui.typewrite(['up', 'enter'], interval=type_interval)
+pyautogui.typewrite(['enter'], interval=type_interval)
 time.sleep(0.1)
 pyautogui.screenshot("elevationItem-{}x{}.png".format(screenWidth, screenHeight))
 
@@ -228,8 +228,8 @@ pyautogui.screenshot("dragScalarbar-{}x{}.png".format(screenWidth, screenHeight)
 # Select OK.
 
 # Geographic Data->Color Setting->Elevation and set max to 840
-pyautogui.typewrite(['alt', 'e', 'down', 'down', 'down', 'down', 'down', 'enter', 'enter'], interval=.1)
-pyautogui.typewrite(['tab', 'tab', 'space', 'tab', '8', '4', '0', 'tab', 'tab', 'tab', 'enter'], interval=.1)
+pyautogui.typewrite(['alt', 'e', 'down', 'down', 'down', 'down', 'down', 'enter', 'enter'], interval=type_interval)
+pyautogui.typewrite(['tab', 'tab', 'space', 'tab', '8', '4', '0', 'tab', 'tab', 'tab', 'enter'], interval=type_interval)
 time.sleep(1.5)
 pyautogui.screenshot("setMaxScalarbar-{}x{}.png".format(screenWidth, screenHeight))
 
