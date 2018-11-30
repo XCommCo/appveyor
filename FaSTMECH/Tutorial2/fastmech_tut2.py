@@ -280,9 +280,10 @@ pyautogui.click(368, 285)
 #
 ##pyautogui.click(343, 211) # at the edge
 pyautogui.click(349, 229) # perpendicular to the last measured WaterSurfaceElevation 
+time.sleep(5.0)
 pyautogui.screenshot("drawCenterLineXXX-{}x{}.png".format(screenWidth, screenHeight))
 pyautogui.typewrite(['enter'], interval=type_interval)
-time.sleep(0.1)
+time.sleep(2.0)
 pyautogui.screenshot("drawCenterLine-{}x{}.png".format(screenWidth, screenHeight))
 pyautogui.typewrite(2*['tab'] + list('360') + 4*['tab'] + list('310') + ['tab'] + list('36') + 2*['tab'] + ['enter'], interval=type_interval)
 time.sleep(0.1)
