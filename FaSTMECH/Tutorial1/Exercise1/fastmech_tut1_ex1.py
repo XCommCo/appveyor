@@ -90,6 +90,8 @@ pyautogui.screenshot("Maximized-{}x{}.png".format(screenWidth, screenHeight))
 
 # start new project
 pyautogui.hotkey('ctrl', 'n')
+time.sleep(1.0)
+pyautogui.screenshot("newFaSTMECH-0-{}x{}.png".format(screenWidth, screenHeight))
 
 # doubleClick on "FaSTMECH (list item)" in "Select Solver"
 newFaSTMECH = pyautogui.locateCenterOnScreen('newFaSTMECH-2012.png')
