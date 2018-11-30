@@ -88,7 +88,7 @@ pyautogui.click(maximizeButton)
 time.sleep(1.0)
 pyautogui.screenshot("Maximized-{}x{}.png".format(screenWidth, screenHeight))
 
-# start new porject
+# start new project
 pyautogui.hotkey('ctrl', 'n')
 
 # doubleClick on "FaSTMECH (list item)" in "Select Solver"
