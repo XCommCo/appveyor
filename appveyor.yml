@@ -13,7 +13,8 @@ os: unstable
 before_build:
   # set
   - py -m pip install pyautogui
-  - ps: (New-Object Net.WebClient).DownloadFile("https://ci.appveyor.com/api/buildjobs/9nr2cqs0v9lp2g29/artifacts/iRIC_Offline_Installer_No_Runtime_prod-9a6400a0.exe", "$Env:APPVEYOR_BUILD_FOLDER\iRIC_Offline_Installer_No_Runtime_prod.exe")
+#  - ps: (New-Object Net.WebClient).DownloadFile("https://ci.appveyor.com/api/buildjobs/9nr2cqs0v9lp2g29/artifacts/iRIC_Offline_Installer_No_Runtime_prod-9a6400a0.exe", "$Env:APPVEYOR_BUILD_FOLDER\iRIC_Offline_Installer_No_Runtime_prod.exe")
+  - ps: (New-Object Net.WebClient).DownloadFile("https://ci.appveyor.com/api/buildjobs/bi4gvbdiixcht84j/artifacts/iRIC_Installer_181108_75a8fd8e.exe", "$Env:APPVEYOR_BUILD_FOLDER\iRIC_Offline_Installer_No_Runtime_prod.exe")
 
 build_script:
   - py run_calc.py
