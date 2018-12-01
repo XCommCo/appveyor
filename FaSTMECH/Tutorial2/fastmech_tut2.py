@@ -294,10 +294,11 @@ capture_and_push_artifact("drawCenterLine-{}x{}.png".format(screenWidth, screenH
 pyautogui.typewrite(2*['tab'] + list('360') + 4*['tab'] + list('310') + ['tab'] + list('36') + 2*['tab'] + ['enter'], interval=type_interval)
 time.sleep(0.1)
 pyautogui.typewrite(['alt', 'n'], interval=type_interval)
+
+# these sleeps are required for iric to recieve keystrokes
 time.sleep(3.0)
 capture_and_push_artifact("createGrid-{}x{}.png".format(screenWidth, screenHeight))
 time.sleep(3.0)
-
 
 # A Confirmation message “Do you want to map geographic data to grid attributes now?” follows.  In this case
 # we will decline by selecting “No”. We want to modify the location and curvature of the grid which is likely in
