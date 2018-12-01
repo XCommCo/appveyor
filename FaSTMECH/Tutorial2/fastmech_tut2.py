@@ -6,6 +6,12 @@ import os
 import tkinter as tk
 import winreg
 
+def capture_and_push_artifact(path):
+    pyautogui.screenshot(path)
+    if os.environ.get('APPVEYOR') is not None:
+        subprocess.call("appveyor PushArtifact " + path)
+    return
+
 # initialize iric by clearing registry
 try:
     winreg.DeleteKey(winreg.HKEY_CURRENT_USER, 'Software\\iRIC Organization\\iRIC GUI\\networkproxy')
@@ -43,7 +49,7 @@ pyautogui.moveTo(screenWidth / 2, screenHeight / 2)
 # minimize everything
 pyautogui.hotkey('win', 'm')
 time.sleep(1.0)
-pyautogui.screenshot("Desktop-{}x{}.png".format(screenWidth, screenHeight))
+capture_and_push_artifact("Desktop-{}x{}.png".format(screenWidth, screenHeight))
 
 # start iRIC (Don't include the shortcut overlay for additional compatibility)
 # see iricIcon-2012.diff.png
@@ -54,7 +60,7 @@ if iricIcon is None:
     sys.exit(0)
 pyautogui.doubleClick(iricIcon)
 time.sleep(5.0)
-pyautogui.screenshot("StartIRIC-{}x{}.png".format(screenWidth, screenHeight))
+capture_and_push_artifact("StartIRIC-{}x{}.png".format(screenWidth, screenHeight))
 
 # cancel maintenance if visible
 # User left click on "Cancel (button)" in "Check for Update"
@@ -65,7 +71,7 @@ else:
     pyautogui.moveTo(maintainanceButtons[LEFT] + 189, maintainanceButtons[TOP] + maintainanceButtons[HEIGHT]/2)  # this might not be necessary (needs further testing - at least for iric installers)
     pyautogui.click(maintainanceButtons[LEFT] + 189, maintainanceButtons[TOP] + maintainanceButtons[HEIGHT]/2)
 time.sleep(1.0)
-pyautogui.screenshot("AfterMaintainance-{}x{}.png".format(screenWidth, screenHeight))
+capture_and_push_artifact("AfterMaintainance-{}x{}.png".format(screenWidth, screenHeight))
 
 # close Start Page
 # User left click on "Close Enter (button)" in "iRIC Start Page"
@@ -76,7 +82,7 @@ if closeButton is None:
 pyautogui.moveTo(closeButton)  # this might not be necessary (needs further testing - at least for iric installers)
 pyautogui.click(closeButton)
 time.sleep(1.0)
-pyautogui.screenshot("AfterStartPage-{}x{}.png".format(screenWidth, screenHeight))
+capture_and_push_artifact("AfterStartPage-{}x{}.png".format(screenWidth, screenHeight))
 
 # maximize main window
 maximizeButton = pyautogui.locateCenterOnScreen('../../maximizeButton-2012.png')
@@ -86,7 +92,7 @@ if maximizeButton is None:
 pyautogui.moveTo(maximizeButton)  # this might not be necessary (needs further testing - at least for iric installers)
 pyautogui.click(maximizeButton)
 time.sleep(1.0)
-pyautogui.screenshot("Maximized-{}x{}.png".format(screenWidth, screenHeight))
+capture_and_push_artifact("Maximized-{}x{}.png".format(screenWidth, screenHeight))
 
 # start new project
 pyautogui.hotkey('ctrl', 'n')
@@ -99,7 +105,7 @@ if newFaSTMECH is None:
 pyautogui.moveTo(newFaSTMECH)  # this might not be necessary (needs further testing - at least for iric installers)
 pyautogui.doubleClick(newFaSTMECH)
 time.sleep(1.0)
-pyautogui.screenshot("newFaSTMECH-{}x{}.png".format(screenWidth, screenHeight))
+capture_and_push_artifact("newFaSTMECH-{}x{}.png".format(screenWidth, screenHeight))
 
 # maximize preprocessor window
 # User left click on "Pre-processing Window (window)" in "Untitled - iRIC 3.0.7.6238 [FaSTMECH]"
@@ -110,7 +116,7 @@ if preProcessingMaximize is None:
 pyautogui.moveTo(preProcessingMaximize)  # this might not be necessary (needs further testing - at least for iric installers)
 pyautogui.click(preProcessingMaximize)
 time.sleep(1.0)
-pyautogui.screenshot("preProcessingMaximize-{}x{}.png".format(screenWidth, screenHeight))
+capture_and_push_artifact("preProcessingMaximize-{}x{}.png".format(screenWidth, screenHeight))
 
 # Import r5finpt2m114_shifted.tpo
 pyautogui.typewrite(['alt', 'i', 'e', 'enter'], interval=type_interval)
@@ -124,8 +130,8 @@ importFinished = pyautogui.locateOnScreen('importFinished-2012.png')
 while importFinished is None:
     # note locateCenterOnScreen takes alot of time so sleep isn't needed
     importFinished = pyautogui.locateOnScreen('importFinished-2012.png')
-    pyautogui.screenshot("importFinished-{}x{}.png".format(screenWidth, screenHeight))
-pyautogui.screenshot("importElevation-{}x{}.png".format(screenWidth, screenHeight))
+    capture_and_push_artifact("importFinished-{}x{}.png".format(screenWidth, screenHeight))
+capture_and_push_artifact("importElevation-{}x{}.png".format(screenWidth, screenHeight))
 
 # The Pre-processing Window now displays the topography data in the canvas and new data appears in the Object Browser
 # under Geographic Data | Elevations | Points1 (Figure 2). In the Object Browser the topography can be made visible or
@@ -141,7 +147,7 @@ if selectedChecked is None:
 pyautogui.moveTo(selectedChecked)  # this might not be necessary (needs further testing - at least for iric installers)
 pyautogui.click(selectedChecked)
 time.sleep(1.0)
-pyautogui.screenshot("selectedUnChecked-{}x{}.png".format(screenWidth, screenHeight))
+capture_and_push_artifact("selectedUnChecked-{}x{}.png".format(screenWidth, screenHeight))
 
 # re-check points
 selectedUnchecked = pyautogui.locateCenterOnScreen('selectedUnchecked-2012.png')
@@ -151,7 +157,7 @@ if selectedUnchecked is None:
 pyautogui.moveTo(selectedUnchecked)  # this might not be necessary (needs further testing - at least for iric installers)
 pyautogui.click(selectedUnchecked)
 time.sleep(1.0)
-pyautogui.screenshot("selectedChecked-{}x{}.png".format(screenWidth, screenHeight))
+capture_and_push_artifact("selectedChecked-{}x{}.png".format(screenWidth, screenHeight))
 
 # Setup Scalarbar
 pyautogui.typewrite(['alt', 'e'] + 6*['down'] + 2*['enter'], interval=type_interval)
@@ -172,7 +178,7 @@ time.sleep(0.1)
 pyautogui.typewrite(6*['down'] + ['enter'], interval=type_interval)
 time.sleep(1.0)
 pyautogui.typewrite(['tab', '2', 'tab', 'tab', 'enter'], interval=type_interval)
-pyautogui.screenshot("pointsItemTwo-{}x{}.png".format(screenWidth, screenHeight))
+capture_and_push_artifact("pointsItemTwo-{}x{}.png".format(screenWidth, screenHeight))
 ##sys.exit(1)
 
 # Save (for example, named Tutorial 2) by selecting File -> Save as File (*.ipro) from the Menu Bar.
@@ -184,7 +190,7 @@ pyautogui.typewrite(['alt', 'f', 'a'], interval=type_interval)
 time.sleep(0.3)
 pyautogui.typewrite(os.getcwd()+'\\Tutorial2.ipro\n', interval=type_interval)
 time.sleep(10.0)
-pyautogui.screenshot("fileSaveAsFile-{}x{}.png".format(screenWidth, screenHeight))
+capture_and_push_artifact("fileSaveAsFile-{}x{}.png".format(screenWidth, screenHeight))
 
 
 # Import an image to place in the background of the data. Background images can be imported through the
@@ -195,7 +201,7 @@ pyautogui.typewrite(['alt', 'i', 'b'], interval=type_interval)
 time.sleep(0.3)
 pyautogui.typewrite(os.getcwd()+'\\GreenRiver.jpg\n', interval=type_interval)
 time.sleep(3.0)
-pyautogui.screenshot("importBackgroundImage-{}x{}.png".format(screenWidth, screenHeight))
+capture_and_push_artifact("importBackgroundImage-{}x{}.png".format(screenWidth, screenHeight))
 
 
 # To verify the modeled water-surface elevation, you need to first import measured water-surface elevation
@@ -205,7 +211,7 @@ pyautogui.typewrite(['alt', 'i', 'm'], interval=type_interval)
 time.sleep(0.3)
 pyautogui.typewrite(os.getcwd()+'\\GR_wse.csv\n', interval=type_interval)
 time.sleep(3.0)
-pyautogui.screenshot("importWaterSurfaceElevation-{}x{}.png".format(screenWidth, screenHeight))
+capture_and_push_artifact("importWaterSurfaceElevation-{}x{}.png".format(screenWidth, screenHeight))
 
 
 # You will see that importing the measured data adds a legend by default.  To turn the legend off in the
@@ -230,7 +236,7 @@ pyautogui.typewrite(13*['tab'] + ['space', 'enter'], interval=type_interval)
 time.sleep(0.1)
 pyautogui.typewrite(3*['tab'] + ['enter'], interval=type_interval)
 time.sleep(1.0)
-pyautogui.screenshot("turnOffLegend-{}x{}.png".format(screenWidth, screenHeight))
+capture_and_push_artifact("turnOffLegend-{}x{}.png".format(screenWidth, screenHeight))
 
 
 # In the Menu Bar select Grid -> Select Algorithm to Create Grid. This opens a dialog (Figure 5). Select “Create
@@ -241,7 +247,7 @@ time.sleep(0.3)
 pyautogui.typewrite(4*['tab'] + ['space', 'enter'], interval=type_interval)
 time.sleep(1.0)
 pyautogui.typewrite(['tab', 'space', 'enter'], interval=type_interval)
-pyautogui.screenshot("selectGridAlgorithm-{}x{}.png".format(screenWidth, screenHeight))
+capture_and_push_artifact("selectGridAlgorithm-{}x{}.png".format(screenWidth, screenHeight))
 
 
 # To draw the centerline, left-click in the desired locations starting at the upstream most point of interest and
@@ -260,7 +266,7 @@ pyautogui.click(zoomInButton)
 pyautogui.click(zoomInButton)
 pyautogui.click(zoomInButton)
 pyautogui.click(zoomInButton)
-pyautogui.screenshot("zoomIn-{}x{}.png".format(screenWidth, screenHeight))
+capture_and_push_artifact("zoomIn-{}x{}.png".format(screenWidth, screenHeight))
 
 # draw centerline
 pyautogui.click(810, 565)
@@ -281,15 +287,15 @@ pyautogui.click(368, 285)
 ##pyautogui.click(343, 211) # at the edge
 pyautogui.click(349, 229) # perpendicular to the last measured WaterSurfaceElevation 
 time.sleep(5.0)
-pyautogui.screenshot("drawCenterLineXXX-{}x{}.png".format(screenWidth, screenHeight))
+capture_and_push_artifact("drawCenterLineXXX-{}x{}.png".format(screenWidth, screenHeight))
 pyautogui.typewrite(['enter'], interval=type_interval)
 time.sleep(2.0)
-pyautogui.screenshot("drawCenterLine-{}x{}.png".format(screenWidth, screenHeight))
+capture_and_push_artifact("drawCenterLine-{}x{}.png".format(screenWidth, screenHeight))
 pyautogui.typewrite(2*['tab'] + list('360') + 4*['tab'] + list('310') + ['tab'] + list('36') + 2*['tab'] + ['enter'], interval=type_interval)
 time.sleep(0.1)
 pyautogui.typewrite(['alt', 'n'], interval=type_interval)
 time.sleep(3.0)
-pyautogui.screenshot("createGrid-{}x{}.png".format(screenWidth, screenHeight))
+capture_and_push_artifact("createGrid-{}x{}.png".format(screenWidth, screenHeight))
 time.sleep(3.0)
 
 
@@ -300,7 +306,7 @@ time.sleep(3.0)
 # select “Manual” for the Execute mapping property. Select OK. Your grid should look similar to Figure 8.
 pyautogui.typewrite(['alt', 'g', 'a', 's'], interval=type_interval)
 for i in range(20):
-    pyautogui.screenshot("manualRadio-{}x{}-{}.png".format(screenWidth, screenHeight, i))
+    capture_and_push_artifact("manualRadio-{}x{}-{}.png".format(screenWidth, screenHeight, i))
     manualRadio = pyautogui.locateCenterOnScreen('manualRadio-2012.png')
     if manualRadio is not None:
         break
@@ -316,7 +322,7 @@ pyautogui.typewrite(2*['tab'] + ['enter'], interval=type_interval)
 # match figure 8
 pyautogui.click(selectedChecked)
 time.sleep(1.0)
-pyautogui.screenshot("elevationPointsOff-{}x{}.png".format(screenWidth, screenHeight))
+capture_and_push_artifact("elevationPointsOff-{}x{}.png".format(screenWidth, screenHeight))
 
 # We need to set the width and length of the template. From the Menu Bar select Grid -> Attributes
 # Mapping -> Setting. This opens the Grid Attribute Mapping Setting dialog.  We previously set the Execute
@@ -359,7 +365,7 @@ if nodeAttributes is None:
 pyautogui.click(nodeAttributes)
 time.sleep(0.1)
 pyautogui.typewrite(['space', 'right', 'down', 'space'], interval=type_interval)
-pyautogui.screenshot("executeElevation-{}x{}.png".format(screenWidth, screenHeight))
+capture_and_push_artifact("executeElevation-{}x{}.png".format(screenWidth, screenHeight))
 
 
 # You will likely need to adjust the Color bar so you can view the results of mapping elevation to the grid.
@@ -403,7 +409,7 @@ pyautogui.click(gridShapeItem)
 time.sleep(0.1)
 pyautogui.typewrite(['space'], interval=type_interval)
 
-pyautogui.screenshot("figure12-{}x{}.png".format(screenWidth, screenHeight))
+capture_and_push_artifact("figure12-{}x{}.png".format(screenWidth, screenHeight))
 
 
 # Save the Project. 
@@ -413,8 +419,8 @@ saveFinished = pyautogui.locateOnScreen('saveFinished-2012.png')
 while saveFinished is None:
     # note locateOnScreen takes alot of time so sleep isn't needed
     saveFinished = pyautogui.locateOnScreen('saveFinished-2012.png')
-    pyautogui.screenshot("saveFinished-{}x{}.png".format(screenWidth, screenHeight))
-pyautogui.screenshot("saveFinished-{}x{}.png".format(screenWidth, screenHeight))
+    capture_and_push_artifact("saveFinished-{}x{}.png".format(screenWidth, screenHeight))
+capture_and_push_artifact("saveFinished-{}x{}.png".format(screenWidth, screenHeight))
 
 
 # Calculation Condition -> Setting
@@ -424,54 +430,54 @@ time.sleep(0.5)
 # Discharge
 pyautogui.typewrite(5*['tab'] + list('247') + 4*['tab'], interval=type_interval)
 time.sleep(0.5)
-pyautogui.screenshot("discharge-{}x{}.png".format(screenWidth, screenHeight))
+capture_and_push_artifact("discharge-{}x{}.png".format(screenWidth, screenHeight))
 
 # Stage
 pyautogui.typewrite(['down'] + 5*['tab'] + list('447.1') + ['tab'], interval=type_interval)
 time.sleep(0.5)
-pyautogui.screenshot("stage-{}x{}.png".format(screenWidth, screenHeight))
+capture_and_push_artifact("stage-{}x{}.png".format(screenWidth, screenHeight))
 
 # Roughness
 pyautogui.typewrite(['down'] + 6*['tab'] + list('0.008') + ['tab'], interval=type_interval)
 time.sleep(0.5)
-pyautogui.screenshot("roughness-{}x{}.png".format(screenWidth, screenHeight))
+capture_and_push_artifact("roughness-{}x{}.png".format(screenWidth, screenHeight))
 
 # Lateral Eddy Viscosity
 pyautogui.typewrite(['down'] + 5*['tab'] + list('0.03') + ['tab'], interval=type_interval)
 time.sleep(0.5)
-pyautogui.screenshot("lateralEddyViscosity-{}x{}.png".format(screenWidth, screenHeight))
+capture_and_push_artifact("lateralEddyViscosity-{}x{}.png".format(screenWidth, screenHeight))
 
 ### # Grid Extension (No changes)
 ### pyautogui.typewrite(['down'], interval=type_interval)
 # Grid Extension (Reqd when last point of centerline is (349, 229))
 pyautogui.typewrite(['down'] + 5*['tab'] + ['down', 'tab'], interval=type_interval)
 time.sleep(0.5)
-pyautogui.screenshot("gridExtension-{}x{}.png".format(screenWidth, screenHeight))
+capture_and_push_artifact("gridExtension-{}x{}.png".format(screenWidth, screenHeight))
 
 # Initial Conditions
 pyautogui.typewrite(['down'] + 5*['tab'] + list('449') + ['tab'], interval=type_interval)
 time.sleep(0.5)
-pyautogui.screenshot("initialConditions-{}x{}.png".format(screenWidth, screenHeight))
+capture_and_push_artifact("initialConditions-{}x{}.png".format(screenWidth, screenHeight))
 
 # Wetting and Drying (No changes)
 pyautogui.typewrite(['down'], interval=type_interval)
 time.sleep(0.5)
-pyautogui.screenshot("wettingAndDrying-{}x{}.png".format(screenWidth, screenHeight))
+capture_and_push_artifact("wettingAndDrying-{}x{}.png".format(screenWidth, screenHeight))
 
 # Solution Parameters
 pyautogui.typewrite(['down'] + 5*['tab'] + list('1000') + 3*['tab'], interval=type_interval)
 time.sleep(0.5)
-pyautogui.screenshot("solutionParameters-{}x{}.png".format(screenWidth, screenHeight))
+capture_and_push_artifact("solutionParameters-{}x{}.png".format(screenWidth, screenHeight))
 
 # Solution Relaxation Coefficients (No changes)
 pyautogui.typewrite(['down'], interval=type_interval)
 time.sleep(0.5)
-pyautogui.screenshot("solutionRelaxationCoefficients-{}x{}.png".format(screenWidth, screenHeight))
+capture_and_push_artifact("solutionRelaxationCoefficients-{}x{}.png".format(screenWidth, screenHeight))
 
 # 2D Solution Output
 pyautogui.typewrite(['down'] + 5*['tab'] + ['down'] + 7*['tab'], interval=type_interval)
 time.sleep(0.5)
-pyautogui.screenshot("2dSolutionOutput-{}x{}.png".format(screenWidth, screenHeight))
+capture_and_push_artifact("2dSolutionOutput-{}x{}.png".format(screenWidth, screenHeight))
 
 # Save and Close
 pyautogui.typewrite(2*['tab'] + ['enter'], interval=type_interval)
@@ -488,8 +494,8 @@ solverFinished = pyautogui.locateOnScreen('../../solverFinished-2012.png')
 while solverFinished is None:
     # note locateCenterOnScreen takes alot of time so sleep isn't needed
     solverFinished = pyautogui.locateOnScreen('../../solverFinished-2012.png')
-    pyautogui.screenshot("solverFinished-{}x{}.png".format(screenWidth, screenHeight))
-pyautogui.screenshot("solverFinished-{}x{}.png".format(screenWidth, screenHeight))
+    capture_and_push_artifact("solverFinished-{}x{}.png".format(screenWidth, screenHeight))
+capture_and_push_artifact("solverFinished-{}x{}.png".format(screenWidth, screenHeight))
 okButton = (solverFinished[0]+196, solverFinished[1]+100)
 pyautogui.moveTo(okButton)  # this might not be necessary (needs further testing - at least for iric installers)
 pyautogui.click(okButton)
@@ -528,7 +534,7 @@ pyautogui.moveTo(waterSurfaceElevationItem)  # this might not be necessary (need
 pyautogui.click(waterSurfaceElevationItem)
 time.sleep(0.1)
 pyautogui.typewrite(['space'], interval=type_interval)
-pyautogui.screenshot("figure15-{}x{}.png".format(screenWidth, screenHeight))
+capture_and_push_artifact("figure15-{}x{}.png".format(screenWidth, screenHeight))
 
 # set scalar settings
 pyautogui.rightClick(waterSurfaceElevationItem)
@@ -536,20 +542,20 @@ pyautogui.typewrite(['down', 'down', 'enter'], interval=type_interval)
 time.sleep(0.1)
 pyautogui.typewrite(6*['tab'] + ['space', 'tab'] + list('449') + 2*['tab'] + list('447') + 5*['tab'] + ['right', 'tab', 'space'] + 10*['tab'], interval=type_interval)
 time.sleep(0.1)
-pyautogui.screenshot("figure16-{}x{}.png".format(screenWidth, screenHeight))
+capture_and_push_artifact("figure16-{}x{}.png".format(screenWidth, screenHeight))
 pyautogui.typewrite(4*['tab'] + ['space'], interval=type_interval)
 time.sleep(0.1)
 pyautogui.typewrite(['down'], interval=type_interval)
-pyautogui.screenshot("figure17a-{}x{}.png".format(screenWidth, screenHeight))
+capture_and_push_artifact("figure17a-{}x{}.png".format(screenWidth, screenHeight))
 pyautogui.typewrite(['tab'] + ['space'], interval=type_interval)
 pyautogui.typewrite(['tab'] + ['space'], interval=type_interval)
-pyautogui.screenshot("figure17b-{}x{}.png".format(screenWidth, screenHeight))
+capture_and_push_artifact("figure17b-{}x{}.png".format(screenWidth, screenHeight))
 pyautogui.typewrite(11*['tab'] + ['enter'], interval=type_interval)
 time.sleep(0.1)
 pyautogui.typewrite(8*['tab'] + ['enter'], interval=type_interval)
 
 
-pyautogui.screenshot("final-{}x{}.png".format(screenWidth, screenHeight))
+capture_and_push_artifact("final-{}x{}.png".format(screenWidth, screenHeight))
 pyautogui.hotkey('win', 'm')
 sys.exit(1)
 

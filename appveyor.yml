@@ -19,10 +19,10 @@ before_build:
 build_script:
   - py run_calc.py
   - py run_iric_install.py
-  - py run_iric.py
-  - cd FaSTMECH\Tutorial1\Exercise1
-  - py fastmech_tut1_ex1.py
-  - cd ..\..\..
+#  - py run_iric.py
+#  - cd FaSTMECH\Tutorial1\Exercise1
+#  - py fastmech_tut1_ex1.py
+#  - cd ..\..\..
   - cd FaSTMECH\Tutorial2
   - py fastmech_tut2.py
 
