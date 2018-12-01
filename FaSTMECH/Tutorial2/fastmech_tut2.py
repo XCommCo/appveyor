@@ -288,7 +288,9 @@ pyautogui.screenshot("drawCenterLine-{}x{}.png".format(screenWidth, screenHeight
 pyautogui.typewrite(2*['tab'] + list('360') + 4*['tab'] + list('310') + ['tab'] + list('36') + 2*['tab'] + ['enter'], interval=type_interval)
 time.sleep(0.1)
 pyautogui.typewrite(['alt', 'n'], interval=type_interval)
+time.sleep(3.0)
 pyautogui.screenshot("createGrid-{}x{}.png".format(screenWidth, screenHeight))
+time.sleep(3.0)
 
 
 # A Confirmation message “Do you want to map geographic data to grid attributes now?” follows.  In this case
