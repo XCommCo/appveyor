@@ -305,12 +305,8 @@ time.sleep(3.0)
 # Bar select Grid -> Attributes Mapping -> Setting and in the resulting Grid Attribute Mapping Setting dialog,
 # select “Manual” for the Execute mapping property. Select OK. Your grid should look similar to Figure 8.
 pyautogui.typewrite(['alt', 'g', 'a', 's'], interval=type_interval)
-for i in range(20):
-    capture_and_push_artifact("manualRadio-{}x{}-{}.png".format(screenWidth, screenHeight, i))
-    manualRadio = pyautogui.locateCenterOnScreen('manualRadio-2012.png')
-    if manualRadio is not None:
-        break
-
+time.sleep(0.1)
+manualRadio = pyautogui.locateCenterOnScreen('manualRadio-2012.png')
 if manualRadio is None:
     print("Didn't locate manualRadio-2012.png")
     sys.exit(0)
