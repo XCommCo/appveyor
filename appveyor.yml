@@ -12,7 +12,8 @@ os: unstable
 # ps : Set-DisplayResolution -Width 1920 -Height 1200  (doesn't work -- including os: unstable) 
 before_build:
   # set
-  - py -m pip install pyautogui
+  # pyautogui as of 0.9.41 raises exceptions when image is not found
+  - py -m pip install pyautogui==0.9.38 PyScreeze==0.1.18
 #  - ps: (New-Object Net.WebClient).DownloadFile("https://ci.appveyor.com/api/buildjobs/9nr2cqs0v9lp2g29/artifacts/iRIC_Offline_Installer_No_Runtime_prod-9a6400a0.exe", "$Env:APPVEYOR_BUILD_FOLDER\iRIC_Offline_Installer_No_Runtime_prod.exe")
   - ps: (New-Object Net.WebClient).DownloadFile("https://ci.appveyor.com/api/buildjobs/bi4gvbdiixcht84j/artifacts/iRIC_Installer_181108_75a8fd8e.exe", "$Env:APPVEYOR_BUILD_FOLDER\iRIC_Offline_Installer_No_Runtime_prod.exe")
 

@@ -36,11 +36,6 @@ HEIGHT = 3
 pyautogui.FAILSAFE = False
 type_interval = 0.02
 
-##{{
-print('1')
-print(os.listdir())
-##}}
-
 # # place mouse on screen to start iRIC (if multiple screens)
 # pyautogui.moveTo(1, 1)
 
@@ -124,8 +119,6 @@ time.sleep(1.0)
 capture_and_push_artifact("preProcessingMaximize-{}x{}.png".format(screenWidth, screenHeight))
 
 # Import GR_Topo_Shifted.tpo
-print("os.getcwd()=", os.getcwd())
-print("fullpath=", os.getcwd()+'\\GR_Topo_Shifted.tpo')
 pyautogui.typewrite(['alt', 'i', 'e', 'enter'], interval=type_interval)
 time.sleep(1.0)
 pyautogui.typewrite(os.getcwd()+'\\GR_Topo_Shifted.tpo\n', interval=type_interval)
@@ -133,11 +126,6 @@ time.sleep(2.5)
 pyautogui.typewrite(['tab', 'enter'], interval=type_interval)
 # wait until import is finished
 ##time.sleep(24.0)
-##{{
-print('2')
-print(os.listdir())
-subprocess.call("appveyor PushArtifact " + 'importFinished-2012.png' + " -DeploymentName fastmech_tut2")
-##}}
 importFinished = pyautogui.locateOnScreen('importFinished-2012.png')
 while importFinished is None:
     # note locateCenterOnScreen takes alot of time so sleep isn't needed
