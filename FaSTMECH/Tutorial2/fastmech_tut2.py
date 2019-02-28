@@ -36,6 +36,11 @@ HEIGHT = 3
 pyautogui.FAILSAFE = False
 type_interval = 0.02
 
+##{{
+print('1')
+print(os.listdir())
+##}}
+
 # # place mouse on screen to start iRIC (if multiple screens)
 # pyautogui.moveTo(1, 1)
 
@@ -128,6 +133,10 @@ time.sleep(2.5)
 pyautogui.typewrite(['tab', 'enter'], interval=type_interval)
 # wait until import is finished
 ##time.sleep(24.0)
+##{{
+print('2')
+print(os.listdir())
+##}}
 importFinished = pyautogui.locateOnScreen('importFinished-2012.png')
 while importFinished is None:
     # note locateCenterOnScreen takes alot of time so sleep isn't needed
