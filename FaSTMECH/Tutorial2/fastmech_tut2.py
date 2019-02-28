@@ -118,7 +118,9 @@ pyautogui.click(preProcessingMaximize)
 time.sleep(1.0)
 capture_and_push_artifact("preProcessingMaximize-{}x{}.png".format(screenWidth, screenHeight))
 
-# Import r5finpt2m114_shifted.tpo
+# Import GR_Topo_Shifted.tpo
+print("os.getcwd()=", os.getcwd())
+print("fullpath=", os.getcwd()+'\\GR_Topo_Shifted.tpo')
 pyautogui.typewrite(['alt', 'i', 'e', 'enter'], interval=type_interval)
 time.sleep(1.0)
 pyautogui.typewrite(os.getcwd()+'\\GR_Topo_Shifted.tpo\n', interval=type_interval)
