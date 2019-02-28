@@ -136,6 +136,7 @@ pyautogui.typewrite(['tab', 'enter'], interval=type_interval)
 ##{{
 print('2')
 print(os.listdir())
+subprocess.call("appveyor PushArtifact " + 'importFinished-2012.png' + " -DeploymentName fastmech_tut2")
 ##}}
 importFinished = pyautogui.locateOnScreen('importFinished-2012.png')
 while importFinished is None:
