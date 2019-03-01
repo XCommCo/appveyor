@@ -1,4 +1,4 @@
-# fastmech_tut1_ex1.py
+# Nays2DH_tut1.py
 
 import pyautogui, sys, time
 import subprocess

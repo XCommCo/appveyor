@@ -28,6 +28,9 @@ build_script:
   - cd FaSTMECH\Tutorial2
   - py fastmech_tut2.py
   - cd ..\..
+  - cd Nays2DH\Tutorial1
+  - py Nays2DH_tut1.py
+  - cd ..\..
   - 7z a all-files.zip *-1024x768.png
   - 7z a all-files.zip FaSTMECH\Tutorial1\Exercise1\*-1024x768.png
   - 7z a all-files.zip FaSTMECH\Tutorial2\*-1024x768.png
